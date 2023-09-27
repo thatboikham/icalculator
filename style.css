@@ -27,6 +27,7 @@ body{
     display: flex;
     justify-content: flex-end;
     margin-bottom: 6px;
+    height: 59.43px;
 }
 span{
     font-size: 40px;

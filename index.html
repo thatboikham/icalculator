@@ -5,31 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="calc.js" defer></script>
 </head>
 <body>
-    <div class="calculator">
-        <div class="result"><span>0</span></div>
-        <div class="grid">
-            <div class="value value_clear grey">AC</div>
-            <div class="value value_changesign grey">+/-</div>
-            <div class="value value_percentage grey">%</div>
-            <div class="value value_division orange">÷</div>
-            <div class="value value_7">7</div>
-            <div class="value value_8">8</div>
-            <div class="value value_9">9</div>
-            <div class="value value_multyplication orange">×</div>
-            <div class="value value_4">4</div>
-            <div class="value value_5">5</div>
-            <div class="value value_6">6</div>
-            <div class="value value_substraction orange">-</div>
-            <div class="value value_1">1</div>
-            <div class="value value_2">2</div>
-            <div class="value value_3">3</div>
-            <div class="value value_addition orange">+</div>
-            <div class="value value_0">0</div>
-            <div class="value value_period">.</div>
-            <div class="value value_equalsign orange">=</div>
+    <div class="iphone">
+        <div class="top">
+            <div class="time">10:15</div>
+            <div class="right">
+                <i class="fas fa-signal fa-xs" style="color: #fffcfc;"></i>
+                <i class="fas fa-wifi fa-xs" style="color: #fffcfc;"></i>
+                <i class="fas fa-battery-full" id="battery" style="color: #fffcfc"></i>
+            </div>
+        </div>
+        <div class="calculator">
+            <div class="result"><span>0</span></div>
+            <div class="grid">
+                <div class="value value_clear grey">AC</div>
+                <div class="value value_changesign grey">+/-</div>
+                <div class="value value_percentage grey">%</div>
+                <div class="value value_division orange">÷</div>
+                <div class="value value_7">7</div>
+                <div class="value value_8">8</div>
+                <div class="value value_9">9</div>
+                <div class="value value_multyplication orange">×</div>
+                <div class="value value_4">4</div>
+                <div class="value value_5">5</div>
+                <div class="value value_6">6</div>
+                <div class="value value_substraction orange">-</div>
+                <div class="value value_1">1</div>
+                <div class="value value_2">2</div>
+                <div class="value value_3">3</div>
+                <div class="value value_addition orange">+</div>
+                <div class="value value_0">0</div>
+                <div class="value value_period">.</div>
+                <div class="value value_equalsign orange">=</div>
+            </div>
+            <div class="home"><div class="bottom"></div></div>
         </div>
     </div>
 </body>

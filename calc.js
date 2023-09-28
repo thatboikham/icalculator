@@ -1,6 +1,7 @@
 const numbers = document.querySelectorAll(".number")
 const resultDIv = document.querySelector("#resultSpan")
 const addition = document.querySelector('.value_addition')
+const substraction = document.querySelector('.value_substraction')
 const multiplication = document.querySelector('.value_multyplication')
 const equals = document.querySelector('.value_equalsign')
 const clear = document.querySelector('.value_clear')
@@ -33,6 +34,10 @@ function add(){
     let sum = parseInt(firstNumber) + parseInt(secondNumber);
     resultDIv.innerHTML = sum;
 }
+function substract(){
+    let minus = parseInt(firstNumber) - parseInt(secondNumber);
+    resultDIv.innerHTML = minus;
+}
 function multiply(){
     let product = parseInt(firstNumber) * parseInt(secondNumber);
     resultDIv.innerHTML = product;
@@ -53,10 +58,14 @@ addition.addEventListener("click", () => {
     operation = "addition";
     resultDIv.innerHTML = "";
 });
+substraction.addEventListener("click", () =>{
+    operation = "substraction"
+    resultDIv.innerHTML = "";
+});
 multiplication.addEventListener("click", () => {
     operation = "multiplication"
     resultDIv.innerHTML = "";
-})
+});
 
 // Add click event listener for the equals button to perform the operation
 equals.addEventListener("click", () => {
@@ -65,6 +74,8 @@ equals.addEventListener("click", () => {
     }
     else if(operation === "multiplication"){
         multiply();
+    }else if(operation === "substraction"){
+        substract();
     }
 });
 clear.addEventListener("click", () => {

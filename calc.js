@@ -3,6 +3,7 @@ const resultDIv = document.querySelector("#resultSpan")
 const addition = document.querySelector('.value_addition')
 const substraction = document.querySelector('.value_substraction')
 const multiplication = document.querySelector('.value_multyplication')
+const division = document.querySelector('.value_division')
 const equals = document.querySelector('.value_equalsign')
 const clear = document.querySelector('.value_clear')
 
@@ -42,6 +43,10 @@ function multiply(){
     let product = parseInt(firstNumber) * parseInt(secondNumber);
     resultDIv.innerHTML = product;
 }
+function divide(){
+    let quotient = parseInt(firstNumber) / parseInt(secondNumber);
+    resultDIv.innerHTML = quotient; 
+}
 
 numbers.forEach(number => {
     number.addEventListener("click", function () {
@@ -59,13 +64,17 @@ addition.addEventListener("click", () => {
     resultDIv.innerHTML = "";
 });
 substraction.addEventListener("click", () =>{
-    operation = "substraction"
+    operation = "substraction";
     resultDIv.innerHTML = "";
 });
 multiplication.addEventListener("click", () => {
-    operation = "multiplication"
+    operation = "multiplication";
     resultDIv.innerHTML = "";
 });
+division.addEventListener('click', ()=>{
+    operation = "division";
+    resultDIv.innerHTML = "";
+})
 
 // Add click event listener for the equals button to perform the operation
 equals.addEventListener("click", () => {
@@ -76,6 +85,8 @@ equals.addEventListener("click", () => {
         multiply();
     }else if(operation === "substraction"){
         substract();
+    }else if(operation === "division"){
+        divide();
     }
 });
 clear.addEventListener("click", () => {

@@ -6,6 +6,7 @@ const multiplication = document.querySelector('.value_multyplication')
 const division = document.querySelector('.value_division')
 const equals = document.querySelector('.value_equalsign')
 const clear = document.querySelector('.value_clear')
+const period = document.querySelector('.value_period')
 
 
 let firstNumber = "";
@@ -14,39 +15,55 @@ let operation = null;
 
 //loop through the numbers to get their values
 
-function getFirstNumber(e){
-    if(firstNumber.length < 10){
-        const clikedNumber = this.innerHTML;
-        firstNumber += clikedNumber;
-    }else if(firstNumber.length >= 5){
-        resultDIv.style.cssText = "font-size: 30px";
-    }
-    resultDIv.innerHTML = parseInt(firstNumber).toLocaleString();
+function getFirstNumber(e) {
+    if (firstNumber.length < 10) {
+        const clickedNumber = this.innerHTML;
+        if (!(firstNumber.includes('.') && clickedNumber === '.')) {
+            firstNumber += clickedNumber;
+            resultDIv.innerHTML = parseFloat(firstNumber).toLocaleString();
+        }
 }
-function getSecondNumber(e){
-    if(secondNumber.length < 8){
-        const clikedNumber = this.innerHTML;
-        secondNumber += clikedNumber;
+function getSecondNumber(e) {
+    if (secondNumber.length < 8) {
+        const clickedNumber = this.innerHTML;
+        if (!(secondNumber.includes('.') && clickedNumber === '.')) {
+            secondNumber += clickedNumber;
+            resultDIv.innerHTML = parseFloat(secondNumber).toLocaleString();
+        }
     }
-    resultDIv.innerHTML = parseInt(secondNumber).toLocaleString();
 }
 
 function add(){
-    let sum = parseInt(firstNumber) + parseInt(secondNumber);
+    let sum = parseFloat(firstNumber) + parseFloat(secondNumber);
     resultDIv.innerHTML = sum;
 }
 function substract(){
-    let minus = parseInt(firstNumber) - parseInt(secondNumber);
+    let minus = parseFloat(firstNumber) - parseFloat(secondNumber);
     resultDIv.innerHTML = minus;
 }
 function multiply(){
-    let product = parseInt(firstNumber) * parseInt(secondNumber);
+    let product = parseFloat(firstNumber) * parseFloat(secondNumber);
     resultDIv.innerHTML = product;
 }
 function divide(){
-    let quotient = parseInt(firstNumber) / parseInt(secondNumber);
+    let quotient = parseFloat(firstNumber) / parseFloat(secondNumber);
     resultDIv.innerHTML = quotient; 
 }
+
+function decimalHandler() {
+    if (operation === null) {
+        if (!firstNumber.includes(".")) {
+            firstNumber += ".";
+            resultDIv.innerHTML = firstNumber;
+        }
+    } else {
+        if (!secondNumber.includes(".")) {
+            secondNumber += ".";
+            resultDIv.innerHTML = secondNumber;
+        }
+    }
+}
+
 
 numbers.forEach(number => {
     number.addEventListener("click", function () {
@@ -96,3 +113,8 @@ clear.addEventListener("click", () => {
     operation = null;
     resultDIv.innerHTML = 0;
 });
+period.addEventListener("click", () => {
+    decimalHandler();
+});
+
+

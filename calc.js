@@ -7,8 +7,11 @@ const division = document.querySelector('.value_division')
 const equals = document.querySelector('.value_equalsign')
 const clear = document.querySelector('.value_clear')
 const period = document.querySelector('.value_period')
+const percentage = document.querySelector('.value_percentage')
+const tooglesign = document.querySelector('.value_changesign')
 const whiteBackground = Array.from(document.querySelectorAll('.operator'))
-console.log(whiteBackground)
+
+
 
 
 let firstNumber = "";
@@ -107,6 +110,31 @@ function addWhiteBackground() {
 
 addWhiteBackground();
 
+function divideby100() {
+    if (operation === null) {
+        firstNumber = (parseFloat(firstNumber) / 100).toString();
+        resultDIv.innerHTML = parseFloat(firstNumber).toLocaleString();
+    } else {
+        secondNumber = (parseFloat(secondNumber) / 100).toString();
+        resultDIv.innerHTML = parseFloat(secondNumber).toLocaleString();
+    }
+}
+
+function toggleSign(number) {
+    return -1 * number;
+}
+
+function changeSign(){
+    if(operation == null){
+        firstNumber = toggleSign(firstNumber);
+        resultDIv.innerHTML = parseFloat(firstNumber).toLocaleString();
+    }else{
+        secondNumber = toggleSign(secondNumber);
+        resultDIv.innerHTML = parseFloat(secondNumber).toLocaleString();
+    }
+}
+
+
 addition.addEventListener("click", () => {
     operation = "addition";
 });
@@ -140,8 +168,10 @@ clear.addEventListener("click", () => {
     secondNumber = "";
     operation = null;
     resultDIv.innerHTML = 0;
-    resultDIv.style.fontSize = '40px'; // Set the default font size here
+    resultDIv.style.fontSize = '40px'; 
 });
 period.addEventListener("click", () => {
     decimalHandler();
 })
+percentage.addEventListener("click", divideby100)
+tooglesign.addEventListener("click", changeSign)

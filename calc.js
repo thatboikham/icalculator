@@ -7,6 +7,8 @@ const division = document.querySelector('.value_division')
 const equals = document.querySelector('.value_equalsign')
 const clear = document.querySelector('.value_clear')
 const period = document.querySelector('.value_period')
+const whiteBackground = Array.from(document.querySelectorAll('.operator'))
+console.log(whiteBackground)
 
 
 let firstNumber = "";
@@ -16,12 +18,13 @@ let operation = null;
 //loop through the numbers to get their values
 
 function getFirstNumber(e) {
-    if (firstNumber.length < 10) {
+    if (firstNumber.length < 8) {
         const clickedNumber = this.innerHTML;
         if (!(firstNumber.includes('.') && clickedNumber === '.')) {
             firstNumber += clickedNumber;
             resultDIv.innerHTML = parseFloat(firstNumber).toLocaleString();
         }
+    } 
 }
 function getSecondNumber(e) {
     if (secondNumber.length < 8) {
@@ -63,6 +66,19 @@ function decimalHandler() {
         }
     }
 }
+function reduceFontsize() {
+    const size = resultDIv.innerHTML.length;
+    if (size > 8) {
+        const newSize = 8 / size * 50; // Adjust the 24 based on your desired font size
+        resultDIv.style.fontSize = newSize + 'px';
+    } else {
+        resultDIv.style.fontSize = '40px'; // Set the default font size here
+    }
+}
+function updateResult() {
+    resultDIv.innerHTML = parseFloat(resultDIv.innerHTML).toLocaleString();
+    reduceFontsize();
+}
 
 
 numbers.forEach(number => {
@@ -75,22 +91,33 @@ numbers.forEach(number => {
         clear.innerHTML = "C"
     });
 });
+function addWhiteBackground() {
+    document.body.addEventListener("click", (e) => {
+        // Check if the clicked element has the "operator" class
+        if (e.target.classList.contains("operator")) {
+            e.target.classList.add("white");
+        } else {
+            // If not, remove the class from all elements with the "operator" class
+            whiteBackground.forEach(element => {
+                element.classList.remove("white");
+            });
+        }
+    });
+}
+
+addWhiteBackground();
 
 addition.addEventListener("click", () => {
     operation = "addition";
-    resultDIv.innerHTML = "";
 });
 substraction.addEventListener("click", () =>{
     operation = "substraction";
-    resultDIv.innerHTML = "";
 });
 multiplication.addEventListener("click", () => {
     operation = "multiplication";
-    resultDIv.innerHTML = "";
 });
 division.addEventListener('click', ()=>{
     operation = "division";
-    resultDIv.innerHTML = "";
 })
 
 // Add click event listener for the equals button to perform the operation
@@ -104,7 +131,8 @@ equals.addEventListener("click", () => {
         substract();
     }else if(operation === "division"){
         divide();
-    }
+    }   
+    updateResult();
 });
 clear.addEventListener("click", () => {
     clear.innerHTML = "AC"
@@ -112,9 +140,8 @@ clear.addEventListener("click", () => {
     secondNumber = "";
     operation = null;
     resultDIv.innerHTML = 0;
+    resultDIv.style.fontSize = '40px'; // Set the default font size here
 });
 period.addEventListener("click", () => {
     decimalHandler();
-});
-
-
+})

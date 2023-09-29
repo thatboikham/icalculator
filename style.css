@@ -4,7 +4,8 @@
     margin: 0px;
     box-sizing: border-box;
     font-size: 20px;
-    font-family: 'Poppins', sans-serif
+    font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 body{
     display: flex;
@@ -45,6 +46,10 @@ span{
 }
 .orange{
     background-color: #ff9f0a;
+}
+.white{
+    background-color: #ffffff;
+    color: #ff9f0a;
 }
 .grey{
     background-color: #a5a5a5;
